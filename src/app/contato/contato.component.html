@@ -1,0 +1,138 @@
+<app-header></app-header>
+
+<div class="container-cadastro">
+
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="shipping-card">
+      <mat-card-header>
+        <mat-card-title>Entrar em contato</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div fxLayout="column" fxLayoutAlign="space-evenly stretch">
+          <!--mat-form-field class="full-width">
+            <input matInput placeholder="Company" formControlName="company" />
+          </mat-form-field-->
+  
+          <div
+            fxLayout="column"
+            fxLayout.gt-xs="row"
+            fxLayoutAlign="space-between start"
+            fxLayoutGap.gt-xs="10px"
+          >
+            <mat-form-field class="full-width">
+              <input
+                matInput
+                placeholder="Nome"
+                formControlName="firstName"
+              />
+              <mat-error
+                *ngIf="addressForm.controls['firstName'].hasError('required')"
+              >
+                Primeiro nome é <strong>obrigatório</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <input
+                matInput
+                placeholder="Sobrnome"
+                formControlName="lastName"
+              />
+              <mat-error
+                *ngIf="addressForm.controls['lastName'].hasError('required')"
+              >
+                Sobrenome é <strong>obrigatório</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+  
+          <mat-radio-group formControlName="shipping">
+            <mat-radio-button value="free">Feminino</mat-radio-button>
+            <mat-radio-button value="priority">Masculino</mat-radio-button>
+            <!--mat-radio-button value="nextday">Posta no próximo dia</mat-radio-button-->
+          </mat-radio-group>
+
+          <mat-form-field class="full-width">
+            <textarea
+              matInput
+              placeholder="Endereço"
+              formControlName="address"
+            ></textarea>
+            <mat-error
+              *ngIf="addressForm.controls['address'].hasError('required')"
+            >
+              Endereço é<strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+  
+          <div fxLayout="row" fxLayoutAlign="start start">
+            <button
+              mat-button
+              type="button"
+              (click)="hasUnitNumber = !hasUnitNumber"
+            >
+              Adicionar endereço
+            </button>
+          </div>
+  
+          <mat-form-field class="full-width" *ngIf="hasUnitNumber">
+            <textarea
+              matInput
+              placeholder="Endereço 2"
+              formControlName="address2"
+            ></textarea>
+          </mat-form-field>
+  
+          <div
+            fxLayout="column"
+            fxLayout.gt-xs="row"
+            fxLayoutAlign="space-between start"
+            fxLayoutGap.gt-xs="10px"
+          >
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Cidade" formControlName="city" />
+              <mat-error
+                *ngIf="addressForm.controls['city'].hasError('required')"
+              >
+                Cidade é <strong>obrigatório</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Estado" formControlName="state">
+                <mat-option
+                  *ngFor="let state of states"
+                  [value]="state.abbreviation"
+                >
+                  {{ state.name }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="addressForm.controls['state'].hasError('required')"
+              >
+                Estado é <strong>obrigatório</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              #postalCode
+              maxlength="9"
+              placeholder="CEP"
+              type="string"
+              formControlName="postalCode"
+            />
+            <mat-hint align="end">{{ postalCode.value.length }} / 8</mat-hint>
+          </mat-form-field>
+  
+         
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">Enviar</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,16 @@
+.container-card {
+    display: flex;
+    gap: 20px;
+    padding: 3% 3%;
+    align-items: center;
+}
+
+.mat-card>:last-child:not(.mat-card-footer), .mat-card-content>:last-child:not(.mat-card-footer) {
+    font-family: cursive;
+}
+
+.example-card img {
+    min-width: 300px;
+    max-height: 200px;
+    object-fit: cover;
+}
