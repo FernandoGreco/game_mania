@@ -28,7 +28,7 @@ div#banner-home img {
 }
 
 .example-card {
-    max-width: 30%;
+    width: 27%;
   }
   
   .example-header-image {
@@ -41,6 +41,7 @@ div#banner-home img {
     gap: 20px;
     padding: 3% 3%;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .mat-card>:last-child:not(.mat-card-footer), .mat-card-content>:last-child:not(.mat-card-footer) {

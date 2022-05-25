@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NoticiasService } from '../services/noticias.service';
+import { Noticias } from '../models/noticias';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +16,9 @@ export class HomeComponent implements OnInit {
   public tarjaAtendimento!:string
   public tarjaParcelas!:string
 
-  constructor() { }
+  constructor(private noticiaService : NoticiasService) { }
+
+  listaNoticias = [] as Noticias[]
 
   ngOnInit(): void {
     this.title = 'Lugar certo para quem ama games!'
@@ -22,6 +26,15 @@ export class HomeComponent implements OnInit {
     this.tarjaAtendimento = 'Atendimento rápido'
     this.tarjaEnvio ='Enviamos para todo Brasil'
     this.tarjaParcelas = 'Até 3x sem juros'
+
+    this.carregarNoticias()
+  }
+
+  carregarNoticias(){
+    this.noticiaService.getNoticias().subscribe( (noticiasRecebidas: Noticias[])=>{
+      this.listaNoticias = noticiasRecebidas;
+      console.log(this.listaNoticias)
+    })
   }
 
 }

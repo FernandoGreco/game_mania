@@ -24,53 +24,16 @@
 <div class="container-card">
 
 
-    <mat-card class="example-card">
+    <mat-card class="example-card" *ngFor="let noticias of listaNoticias">
         <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Super Nintendo</mat-card-title>
-        <mat-card-subtitle>16 Bits</mat-card-subtitle>
+        <mat-card-title>{{noticias.titulo}}</mat-card-title>
+        <mat-card-subtitle>{{noticias.subtitulo}}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="/assets/img/super-nitendo.jpg" alt="Photo of a Shiba Inu">
+        <img mat-card-image src={{noticias.imagem}} alt="Photo of a Shiba Inu">
         <mat-card-content>
         <p>
-            O Super Nintendo Entertainment System (Super NES, SNES ou Super Nintendo) é um console de videogame de 16 bits desenvolvido pela Nintendo que foi lançado em 1990 no Japão, 1991 nos Estados Unidos, 1992 na Europa e Australásia (Oceania) e América do Sul em 1993. No Japão, o sistema é chamado de Super Famicom (em japonês: スーパーファミコン, transl. Sūpā Famikon), oficialmente, adotando o nome abreviado do seu antecessor, o Famicom), ou SFC para breve.
-       </p>
-        </mat-card-content>
-        <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-        </mat-card-actions>    
-    </mat-card>
-
-    <mat-card class="example-card">
-        <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Mega Drive</mat-card-title>
-        <mat-card-subtitle>16 Bits</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image src="/assets/img/mega-drive.png" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-        <p>
-            Mega Drive (メガドライブ Mega Doraibu?), conhecido como Sega Genesis na América do Norte, é um console de video game de 16 bits da Sega que concorria diretamente com o Super Nintendo Entertainment System. O console fez grande sucesso na década de 1990, perdendo espaço após o surgimento e popularização da nova geração de consoles de 32 bits, como o PlayStation da Sony.
-        </p>
-        </mat-card-content>
-        <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-        </mat-card-actions>    
-    </mat-card>
-    
-    <mat-card class="example-card">
-        <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Master System</mat-card-title>
-        <mat-card-subtitle>8 Bits</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image src="/assets/img/master-system.png" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-        <p>
-            Master System (マスターシステム Masutã Shisutemu?) é um console de videogame de 8-bits produzido pela Sega, para concorrer com o Nintendo Entertainment System. Lançado inicialmente no Japão em 1986, com o nome Sega Mark III, ele enfrentou grandes dificuldades devido à forte concorrência do NES da Nintendo.
-        </p>
+            {{noticias.descricao}} </p>
         </mat-card-content>
         <mat-card-actions>
         <button mat-button>LIKE</button>
