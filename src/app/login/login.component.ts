@@ -16,9 +16,12 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) {
   }
 
+  listaUsers = [] as User[]
   ngOnInit() {
-  }
 
+    
+  }
+  rota  = Router
   loginModel = new User();
   mensagem = ""
 
@@ -32,22 +35,21 @@ export class LoginComponent implements OnInit {
     if (!this.loginForm.valid) {
       return;
     }
-    console.log(this.loginForm.value);
+    this.checkUser(this.loginForm.value.email,this.loginForm.value.password)
+   }
 
-    
-    this.loginService.login(this.loginModel).subscribe((response)=>{
-      this.router.navigateByUrl('')
-    }, (respostaErro)=>{
-      this.mensagem = respostaErro.console.error()
-      console.log(this.mensagem)
-      
-    
+  checkUser(email:string,senha:string): void{
+    this.loginService.getUsers().subscribe( (usersRecebids: User[])=>{
+      this.listaUsers = usersRecebids
+
+      this.listaUsers.forEach(function(value){
+        if(value.email==email && value.password==senha){
+          console.log('usuário existe')      
+        }
+      })
+
     })
-   
+    
   }
-
-
-
-
  
 }
